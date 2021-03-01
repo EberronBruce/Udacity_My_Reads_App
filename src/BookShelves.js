@@ -19,6 +19,7 @@ class BookShelves extends Component {
   };
 
  curReadBooks = (books) => {
+   //console.log(books)
    return(books.filter((book) => book.shelf === bookStatus.CURRENTLY_READING))
  };
 
@@ -31,9 +32,13 @@ class BookShelves extends Component {
  }
 
  handleUpdateState = (event, bookID) => {
-   console.log("Testing This")
-   console.log(bookID)
-   console.log(event.target.value)
+   this.setState((prevState) => {
+     const index = prevState.books.findIndex((book) => book.id === bookID);
+     let book = prevState.books[index];
+     book.shelf = event.target.value;
+     prevState.books[index] = book;
+     return prevState;
+   })
  }
 
  renderBookShelf = (title) => {
