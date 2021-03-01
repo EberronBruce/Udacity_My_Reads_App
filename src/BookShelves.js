@@ -1,13 +1,8 @@
 import React, { Component } from 'react';
 import BookShelf from './BookShelf';
 import * as BooksAPI from './utils/BooksAPI';
+import { bookStatus, stringBookStatus } from './utils/Helpers';
 
-const bookStatus = {
-  CURRENTLY_READING: "currentlyReading",
-  WANT_TO_READ: "wantToRead",
-  READ:  "read",
-  MISSING: "missingKey"
-}
 
 class BookShelves extends Component {
   state = {
@@ -35,20 +30,22 @@ class BookShelves extends Component {
    return(books.filter((book) => book.shelf === bookStatus.READ))
  }
 
- handleUpdateState = () => {
+ handleUpdateState = (event, bookID) => {
    console.log("Testing This")
+   console.log(bookID)
+   console.log(event.target.value)
  }
 
  renderBookShelf = (title) => {
    switch(title) {
-     case "Currently Reading":
+     case stringBookStatus.CURRENTLY_READING:
       return <BookShelf shelfName={title} books={this.curReadBooks(this.state.books)} updateState={this.handleUpdateState} key={bookStatus.CURRENTLY_READING}/>;
-     case "Want to Read":
+     case stringBookStatus.WANT_TO_READ:
       return <BookShelf shelfName={title} books={this.wantToReadBooks(this.state.books)} updateState={this.handleUpdateState} key={bookStatus.WANT_TO_READ}/>;
-     case "Read":
+     case stringBookStatus.READ:
       return <BookShelf shelfName={title} books={this.readBooks(this.state.books)} updateState={this.handleUpdateState} key={bookStatus.READ}/>;
     default:
-      return <BookShelf shelfName={title} books={null} key={bookStatus.MISSING}/>;
+      return <BookShelf shelfName={title} books={null} key={bookStatus.NONE}/>;
    }
  }
 

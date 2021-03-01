@@ -6,14 +6,14 @@ class SelectionButton extends Component {
 
   handleChange = (event) => {
     event.preventDefault();
-    console.log(event.target.value)
-    this.props.handler()
+    //console.log(event.target.value)
+    this.props.handler(event, this.props.bookID)
   }
 
   render(){
     return(
       <div className="book-shelf-changer">
-        <select onChange={this.handleChange} value="none">
+        <select onChange={this.handleChange} value={this.props.shelf}>
           <option value="move" disabled>Move to...</option>
           <option value="currenlyReading">Currently Reading</option>
           <option value="wantToRead">Want to Read</option>

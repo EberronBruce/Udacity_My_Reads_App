@@ -7,13 +7,13 @@ const imageHeight = 193;
 
 class Book extends Component {
   render(){
-    const { title, author, imageUrl, bookID, handler } = this.props
+    const { title, author, imageUrl, bookID, shelf, handler } = this.props
     return(
       <li>
         <div className="book">
           <div className="book-top">
             <div className="book-cover" style={{ width: imageWidth, height: imageHeight, backgroundImage: `url(${imageUrl})` }}></div>
-            <SelectionButton handler={handler} />
+            <SelectionButton handler={handler} bookID={bookID} shelf={shelf}/>
           </div>
           <div className="book-title">{title}</div>
           <div className="book-authors">{author}</div>
