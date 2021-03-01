@@ -1,12 +1,9 @@
 import React, { Component } from 'react';
 import './App.css';
-import BookShelves from './BookShelves'
+import BookShelves from './BookShelves';
+
 
 class BooksApp extends Component {
-  state = {
-
-  }
-
   render(){
     return(
       <div className="App">
