@@ -4,11 +4,8 @@ import PropTypes from 'prop-types';
 
 
 class BookShelf extends Component {
-
   render(){
-
-    const { shelfName, books } = this.props;
-    console.log(books);
+    const { shelfName, books, updateState } = this.props;
 
     return(
       <header className="bookshelf">
@@ -16,7 +13,7 @@ class BookShelf extends Component {
         <main className="bookshelf-books">
           <ol className="books-grid">
             {books.map((book) => (
-              <Book title={book.title} author={book.authors} imageUrl={book.imageLinks.thumbnail} key={book.id}/>
+              <Book title={book.title} author={book.authors} imageUrl={book.imageLinks.thumbnail} bookID={book.id} handler={updateState} key={book.id}/>
             ))}
           </ol>
         </main>
@@ -26,7 +23,8 @@ class BookShelf extends Component {
 }
 
 BookShelf.propTypes = {
-  shelfName: PropTypes.string.isRequired
+  shelfName: PropTypes.string.isRequired,
+  books: PropTypes.array.isRequired
 };
 
 export default BookShelf;

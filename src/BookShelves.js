@@ -35,14 +35,18 @@ class BookShelves extends Component {
    return(books.filter((book) => book.shelf === bookStatus.READ))
  }
 
+ handleUpdateState = () => {
+   console.log("Testing This")
+ }
+
  renderBookShelf = (title) => {
    switch(title) {
      case "Currently Reading":
-      return <BookShelf shelfName={title} books={this.curReadBooks(this.state.books)} key={bookStatus.CURRENTLY_READING}/>;
+      return <BookShelf shelfName={title} books={this.curReadBooks(this.state.books)} updateState={this.handleUpdateState} key={bookStatus.CURRENTLY_READING}/>;
      case "Want to Read":
-      return <BookShelf shelfName={title} books={this.wantToReadBooks(this.state.books)} key={bookStatus.WANT_TO_READ}/>;
+      return <BookShelf shelfName={title} books={this.wantToReadBooks(this.state.books)} updateState={this.handleUpdateState} key={bookStatus.WANT_TO_READ}/>;
      case "Read":
-      return <BookShelf shelfName={title} books={this.readBooks(this.state.books)} key={bookStatus.READ}/>;
+      return <BookShelf shelfName={title} books={this.readBooks(this.state.books)} updateState={this.handleUpdateState} key={bookStatus.READ}/>;
     default:
       return <BookShelf shelfName={title} books={null} key={bookStatus.MISSING}/>;
    }
