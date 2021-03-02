@@ -16,19 +16,21 @@ class SearchBooks extends Component {
   };
 
 updateQuery = (query) => {
+  if (query === '') {
+    console.log("Query Empty")
+    this.setState((prevState) => ({
+      books: []
+    }));
+     return
+   }
   this.searchBooks(query.trim())
  };
 
  searchBooks = (query) => {
-   if (query === '') {
-     this.setState((prevState) => ({
-       books: []
-     }));
-      return
-    }
    BooksAPI.search(query)
    .then((bookSearch) => {
      if (query !== '') {
+       console.log(`Query is Not Empty: ${query}`) //Problem is here, query is not empty when it should.
        this.setState((prevState) => {
          if('error' in bookSearch) {
            prevState.books = [];
@@ -43,7 +45,6 @@ updateQuery = (query) => {
        }));
      }
    });
-
  }
 
  getBooksOnShelf = () => {
