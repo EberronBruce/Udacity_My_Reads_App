@@ -1,14 +1,17 @@
 import React, { Component } from 'react';
 import { bookStatus } from './utils/Helpers';
-
+import PropTypes from 'prop-types';
 
 
 class SelectionButton extends Component {
+  static propTypes = {
+    shelf: PropTypes.string.isRequired,
+    handler: PropTypes.func.isRequired
+  };
 
   handleChange = (event) => {
     event.preventDefault();
-    //console.log(event.target.value)
-    this.props.handler(event, this.props.bookID)
+    this.props.handler(event, this.props.bookID);
   }
 
   render(){
@@ -25,5 +28,7 @@ class SelectionButton extends Component {
     )
   }
 };
+
+
 
 export default SelectionButton;

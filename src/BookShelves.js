@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import BookShelf from './BookShelf';
 import * as BooksAPI from './utils/BooksAPI';
 import { bookStatus, stringBookStatus } from './utils/Helpers';
+import PropTypes from 'prop-types';
 
 
 class BookShelves extends Component {
@@ -74,5 +75,8 @@ class BookShelves extends Component {
   }
 }
 
+BookShelves.propTypes = {
+  shelfTitles: PropTypes.array.isRequired
+};
 
 export default BookShelves;
