@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 
 const AddButton = () => {
   return(
-    <Link to='/add' className="open-search">
+    <Link to='/search' className="open-search">
       <button>AddButton()</button>
     </Link>
   )

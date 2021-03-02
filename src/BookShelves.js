@@ -14,7 +14,6 @@ class BookShelves extends Component {
   };
 
   getAllBooks = () => {
-    console.log("Get All Books")
     BooksAPI.getAll()
     .then((books) => {
       this.setState(() => ({
@@ -24,7 +23,6 @@ class BookShelves extends Component {
   };
 
  curReadBooks = (books) => {
-   //console.log(books)
    return(books.filter((book) => book.shelf === bookStatus.CURRENTLY_READING))
  };
 
@@ -37,8 +35,6 @@ class BookShelves extends Component {
  };
 
  handleUpdateState = (event, bookID) => {
-   console.log("Handle update State")
-
   const index = this.state.books.findIndex((book) => book.id === bookID);
   let book = this.state.books[index];
   BooksAPI.update(book, event.target.value).then((dictIDs) => {

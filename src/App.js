@@ -17,7 +17,7 @@ class BooksApp extends Component {
             <AddButton />
           </div>
         )} />
-        <Route path='/add' render={() => (
+        <Route path='/search' render={() => (
           <SearchBooks />
         )} />
       </div>
