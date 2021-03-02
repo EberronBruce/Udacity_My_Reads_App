@@ -1,3 +1,15 @@
+# My Reads App for Udacity React class
+
+This is a simple React app that allows a user to put a book in different categories from Currently Reading, Want to Read, and Read shelves.
+The user can do a search for books which would call a web api to download data and display them the user then can use the arrow button on the books to select which shelf to move them to.
+This can be done on both the shelf and the search fields. The search fields will only accept a limited words based on the api.
+The search terms can be found here [Search Terms](https://github.com/udacity/reactnd-project-myreads-starter/blob/master/SEARCH_TERMS.md).
+
+This project was created using Create React App. I will leave those instructions below.
+You should be able to use 'npm install' to install the packages and use either 'npm start' or 'yarn start' to run the application.
+It should be on your localhost:3000 like the what the instructions say below.
+
+This below is the documentation that comes from Create React App.
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
