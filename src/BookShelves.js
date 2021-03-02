@@ -10,6 +10,11 @@ class BookShelves extends Component {
   }
 
   componentDidMount() {
+    this.getAllBooks();
+  };
+
+  getAllBooks = () => {
+    console.log("Get All Books")
     BooksAPI.getAll()
     .then((books) => {
       this.setState(() => ({
@@ -25,20 +30,21 @@ class BookShelves extends Component {
 
  wantToReadBooks = (books) => {
    return(books.filter((book) => book.shelf === bookStatus.WANT_TO_READ))
- }
+ };
 
  readBooks = (books) => {
    return(books.filter((book) => book.shelf === bookStatus.READ))
- }
+ };
 
  handleUpdateState = (event, bookID) => {
-   this.setState((prevState) => {
-     const index = prevState.books.findIndex((book) => book.id === bookID);
-     let book = prevState.books[index];
-     book.shelf = event.target.value;
-     prevState.books[index] = book;
-     return prevState;
-   })
+   console.log("Handle update State")
+
+  const index = this.state.books.findIndex((book) => book.id === bookID);
+  let book = this.state.books[index];
+  BooksAPI.update(book, event.target.value).then((dictIDs) => {
+    //Having issues with order so just make API call to keep order though its slow. Would be better if the promise return books instead of idea
+    this.getAllBooks();
+  })
  }
 
  renderBookShelf = (title) => {

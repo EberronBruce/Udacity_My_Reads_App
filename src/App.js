@@ -9,6 +9,9 @@ class BooksApp extends Component {
     return(
       <div className="App">
         <BookShelves shelfTitles={[stringBookStatus.CURRENTLY_READING, stringBookStatus.WANT_TO_READ, stringBookStatus.READ]}/>
+        <div className="open-search">
+          <button >Add a book</button>
+        </div>
       </div>
     )
   }
